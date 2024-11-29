@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+class Button // Define a Button class
+{
+public:
+    
+    void updateMode(const string& mode) // button's mode (Night or Day)
+    {
+        if (mode == "Night") // new mode checking and printing a message
+        {
+            cout << "Button: Switching to Night Mode visuals." << endl;
+        } else
+        {
+            cout << "Button: Switching to Day Mode visuals." << endl;
+        }
+    }
+};
+
+
+class System // Define a System class
+{
+private:
+    string currentMode = "Day";  // Current mode
+    Button button; // Button object to interact with
+
+public:
+    void changeMode(const string& newMode)  // Method to change the system's mode
+    {
+        currentMode = newMode; // Update the current mode
+       
+        cout << "System: Mode changed to " << currentMode << "." << endl;  // indicating mode change
+       
+        button.updateMode(currentMode);  // Updating the button's mode
+    }
+};
+
+int main()
+{
+    System system;              // Create a System object
+  
+    system.changeMode("Night"); // mode to Night
+    
+    system.changeMode("Day");   // mode to Day
+
+    return 0;
+}
