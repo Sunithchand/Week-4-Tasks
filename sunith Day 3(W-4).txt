@@ -1,0 +1,60 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+using namespace std;
+
+struct Button
+{
+    string name;
+    string status;
+    void show() const     // Button details
+    {
+        cout << "Name: " << name << ", Status: " << status << endl;
+    }
+};
+
+int main()
+{
+    vector<Button> buttons = {{"Button1", "Visible"}, {"Button2", "invisible"}, {"Button3", "Visible"}}; // Creating list of buttons
+
+    cout << "Buttons:" << endl;
+    for (const auto& button : buttons)
+    {
+        button.show();
+    }
+    
+    vector<Button> copyButtons = buttons; // Copy of the buttons
+    cout << "\nCopy Buttons:" << endl;
+    for (const auto& button : copyButtons)
+    {
+        button.show();
+    }
+
+    for (auto& button : buttons)   // Turning off buttons
+    {
+        button.status = "invisible";
+    }
+
+    cout << "\nButtons after turning off:" << endl;
+    for (const auto& button : buttons)
+    {
+        button.show();
+    }
+
+    for (auto& button : buttons) // Turning on buttons which r off
+    {
+        if (button.status == "invisible")
+        {
+            button.status = "Visible";
+        }
+    }
+
+    cout << "\nButtons after turning on:" << endl;
+    for (const auto& button : buttons)
+    {
+        button.show();
+    }
+    
+    return 0;
+}
