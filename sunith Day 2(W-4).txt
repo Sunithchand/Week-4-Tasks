@@ -46,7 +46,6 @@ int main()
         cout << combinedWidgets[i] << endl;   // Loop through the combined widgets  
     }  
 
-      
     string searchCombined = "Tachometer"; // Find a specific widget in the combined list
     bool found = false; 
 
