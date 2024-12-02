@@ -1,0 +1,71 @@
+#include <iostream>  
+#include <vector>     
+#include <set>      
+using namespace std; 
+
+int main() 
+{  
+    vector<string> dynamicWidgets;     // changing widgets 
+    dynamicWidgets.push_back("Speedometer");  
+    dynamicWidgets.push_back("Tachometer");    
+    dynamicWidgets.push_back("FuelGauge");    
+
+    set<string> staticWidgets;   // fixed widgets
+    staticWidgets.insert("Logo");            
+    staticWidgets.insert("WarningLights");    
+
+    cout << "Dynamic Widgets:" << endl; // Print all dynamic widgets  
+    for (size_t i = 0; i < dynamicWidgets.size(); i++)
+    {  
+        cout << dynamicWidgets[i] << endl;  
+    }  
+
+    string searchWidget = "WarningLights";   // Check if a specific widget is in the static widgets list  
+    if (staticWidgets.find(searchWidget) != staticWidgets.end())
+    { 
+        cout << "\n" << searchWidget << " is in the static widgets list." << endl;  
+    } else
+    { 
+        cout << "\n" << searchWidget << " is not in the static widgets list." << endl;  
+    }  
+     
+    vector<string> combinedWidgets;  // Combine both lists into one new list  
+    for (size_t i = 0; i < dynamicWidgets.size(); i++) // Create a new list for combined widgets 
+    {  
+        combinedWidgets.push_back(dynamicWidgets[i]);  // Add all dynamic widgets to the combined list  
+    }  
+    
+    for (const auto& widget : staticWidgets) // Add all static widgets to the combined list  
+    {  
+        combinedWidgets.push_back(widget); // Copy each static widget  
+    }  
+
+    cout << "\nCombined Widgets:" << endl;  // Print the combined widgets list  
+    for (size_t i = 0; i < combinedWidgets.size(); i++)
+    { 
+        cout << combinedWidgets[i] << endl;   // Loop through the combined widgets  
+    }  
+
+      
+    string searchCombined = "Tachometer"; // Find a specific widget in the combined list
+    bool found = false; 
+
+    for (size_t i = 0; i < combinedWidgets.size(); i++) // Loop through the combined widgets 
+    {  
+        if (combinedWidgets[i] == searchCombined)
+        {  
+            found = true; 
+            break; 
+        }  
+    }  
+
+    if (found)
+    {  
+        cout << "\n" << searchCombined << " found in the combined widgets list." << endl;  
+    } else 
+    { 
+        cout << "\n" << searchCombined << " not found in the combined widgets list." << endl;   
+    }  
+
+    return 0;
+}
