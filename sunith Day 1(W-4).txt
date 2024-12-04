@@ -1,0 +1,65 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+struct Control 
+{
+    int id;
+    string type;
+    string state;
+};
+
+int main()
+{
+    vector<Control> controls = {
+        {1, "button", "visible"},
+        {2, "button", "invisible"},
+        {3, "button", "disabled"},
+        {4, "button", "visible"},
+        {5, "button", "disabled"},
+        {6, "slider", "visible"},
+        {7, "slider", "invisible"},
+        {8, "slider", "disabled"},
+        {9, "slider", "visible"},
+        {10, "slider", "disabled"}
+    };
+
+    cout << "All controls:\n";
+    for (auto &ctrl : controls)
+    {
+        cout << "ID: " << ctrl.id << ", Type: " << ctrl.type << ", State: " << ctrl.state << "\n";
+    }
+
+    int searchID = 3;  // Finding control by ID
+    for (auto &ctrl : controls) 
+    {
+        if (ctrl.id == searchID) 
+        {
+            cout << "\nControl with ID " << searchID << ": Type = " << ctrl.type << ", State = " << ctrl.state << "\n";
+            break;
+        }
+    }
+    
+    for (auto &ctrl : controls) // first invisible control
+    {
+        if (ctrl.state == "invisible")
+        {
+            cout << "\nFirst invisible control: ID = " << ctrl.id << ", Type = " << ctrl.type << "\n";
+            break;
+        }
+    }
+
+    int visibleCount = 0;   // Counting the number of visible controls
+    for (auto &ctrl : controls) 
+    {
+        if (ctrl.state == "visible")
+        {
+            visibleCount++;
+        }
+    }
+    cout << "\nNumber of visible controls: " << visibleCount << "\n";
+
+    return 0;
+}
